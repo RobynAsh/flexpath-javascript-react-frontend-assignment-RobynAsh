@@ -1,13 +1,22 @@
-import React from "react";
+import React from 'react';
+import Home from './pages/Home';
+import Search from './pages/Search';
+import {
+  BrowserRouter,
+  createBrowserRouter,
+  RouterProvider,
+  NavLink,
+} from 'react-router-dom';
+
+const router = createBrowserRouter([
+  { path: '/', element: <Home /> },
+  { path: '/search', element: <Search /> },
+]);
 
 function App() {
   return (
     <div>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-        {/* <p> tag is a placeholder, You'll need to change the tag/component type later*/}
-        <p className="navbar-brand ms-4 nav-link">User Behavior Data</p>
-      </nav>
-      <hr />
+      <RouterProvider router={router} />
     </div>
   );
 }
