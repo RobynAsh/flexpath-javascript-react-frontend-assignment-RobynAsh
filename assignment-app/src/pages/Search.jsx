@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import Layout from '../components/Layout';
 import SearchForm from '../components/SearchForm';
+import RecordDisplay from '../components/RecordDisplay';
+import SearchResults from '../components/SearchResults';
 
-const Search = ({ searchResults, setFilterData }) => {
+const Search = ({ searchResults, setFilterData, isLoading, errorMessage }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const _formData = new FormData(event.target); // Create a FormData object from the form
@@ -14,9 +16,16 @@ const Search = ({ searchResults, setFilterData }) => {
   };
   return (
     <Layout>
-      <div>
+      <div className="container">
         <SearchForm handleSubmit={handleSubmit} />
-        <pre>{JSON.stringify(searchResults)}</pre>
+        <RecordDisplay
+          numOfRecords={searchResults.length}
+          isLoading={isLoading}
+        />
+        <SearchResults
+          searchResults={searchResults}
+          errorMessage={errorMessage}
+        />
       </div>
     </Layout>
   );

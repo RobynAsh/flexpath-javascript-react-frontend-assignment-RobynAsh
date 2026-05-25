@@ -11,7 +11,8 @@ import {
 } from 'react-router-dom';
 
 function App() {
-  const { searchResults, setFilterData } = useGetSearchResults();
+  const { searchResults, setFilterData, isLoading, errorMessage } =
+    useGetSearchResults();
   return (
     <div>
       <BrowserRouter>
@@ -23,6 +24,8 @@ function App() {
               <Search
                 searchResults={searchResults}
                 setFilterData={setFilterData}
+                isLoading={isLoading}
+                errorMessage={errorMessage}
               />
             }
           />

@@ -1,6 +1,6 @@
 const SearchForm = ({ handleSubmit }) => {
   return (
-    <form className="container" onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit}>
       <div className="row">
         <h6 className="col">Search by Keyword</h6>
       </div>
