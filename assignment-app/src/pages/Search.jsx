@@ -3,6 +3,7 @@ import Layout from '../components/Layout';
 import SearchForm from '../components/SearchForm';
 import RecordDisplay from '../components/RecordDisplay';
 import SearchResults from '../components/SearchResults';
+import Analytics from '../components/Analytics';
 
 const Search = ({ searchResults, setFilterData, isLoading, errorMessage }) => {
   const handleSubmit = (event) => {
@@ -22,6 +23,7 @@ const Search = ({ searchResults, setFilterData, isLoading, errorMessage }) => {
           numOfRecords={searchResults.length}
           isLoading={isLoading}
         />
+        <Analytics searchResults={searchResults} />
         <SearchResults
           searchResults={searchResults}
           errorMessage={errorMessage}

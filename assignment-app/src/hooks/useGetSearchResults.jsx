@@ -15,6 +15,7 @@ const useGetSearchResults = () => {
       const data = await fetch(`/api/data/search?${params}`);
       const results = await data.json();
       setSearchResults(results);
+      setErrorMessage(undefined);
     } catch (error) {
       setErrorMessage(error.message);
     } finally {
