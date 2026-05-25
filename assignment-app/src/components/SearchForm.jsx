@@ -1,4 +1,10 @@
-const SearchForm = ({ handleSubmit }) => {
+import { useState } from 'react';
+
+const SearchForm = ({ handleSubmit, filterData }) => {
+  const [filterKeyword, setFilterKeyword] = useState(
+    filterData?.filterKeyword || null
+  );
+  const [filterType, setFilterType] = useState(filterData?.filterType || null);
   return (
     <form onSubmit={handleSubmit}>
       <div className="row">
@@ -7,7 +13,15 @@ const SearchForm = ({ handleSubmit }) => {
       <div className="row mb-4">
         <div className="col-3">
           <div className="form-floating">
-            <select className="form-select" id="filterType" name="filterType">
+            <select
+              className="form-select"
+              id="filterType"
+              name="filterType"
+              value={filterType}
+              onChange={(event) => {
+                setFilterType(event.target.value);
+              }}
+            >
               <option value="gender">Gender</option>
               <option value="operatingSystem">Operating System</option>
               <option value="model">Model</option>
@@ -20,6 +34,10 @@ const SearchForm = ({ handleSubmit }) => {
           <div className="form-floating">
             <input
               type="text"
+              value={filterKeyword}
+              onChange={(event) => {
+                setFilterKeyword(event.target.value);
+              }}
               className="form-control"
               id="filterKeyword"
               name="filterKeyword"

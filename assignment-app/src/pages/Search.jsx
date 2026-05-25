@@ -5,7 +5,13 @@ import RecordDisplay from '../components/RecordDisplay';
 import SearchResults from '../components/SearchResults';
 import Analytics from '../components/Analytics';
 
-const Search = ({ searchResults, setFilterData, isLoading, errorMessage }) => {
+const Search = ({
+  searchResults,
+  setFilterData,
+  isLoading,
+  errorMessage,
+  filterData,
+}) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const _formData = new FormData(event.target); // Create a FormData object from the form
@@ -18,7 +24,7 @@ const Search = ({ searchResults, setFilterData, isLoading, errorMessage }) => {
   return (
     <Layout>
       <div className="container">
-        <SearchForm handleSubmit={handleSubmit} />
+        <SearchForm handleSubmit={handleSubmit} filterData={filterData} />
         <RecordDisplay
           numOfRecords={searchResults.length}
           isLoading={isLoading}

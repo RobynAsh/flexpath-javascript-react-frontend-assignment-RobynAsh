@@ -30,7 +30,7 @@ const useGetSearchResults = () => {
     } else setHasInitialized(true);
   }, [filterData]);
 
-  return { searchResults, setFilterData, isLoading, errorMessage };
+  return { searchResults, setFilterData, isLoading, errorMessage, filterData };
 };
 
 export default useGetSearchResults;
