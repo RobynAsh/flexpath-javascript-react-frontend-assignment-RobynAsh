@@ -1,22 +1,33 @@
 import React from 'react';
 import Home from './pages/Home';
 import Search from './pages/Search';
+import useGetSearchResults from './hooks/useGetSearchResults';
 import {
   BrowserRouter,
-  createBrowserRouter,
-  RouterProvider,
-  NavLink,
+  //createBrowserRouter,
+  //RouterProvider,
+  Routes,
+  Route,
 } from 'react-router-dom';
 
-const router = createBrowserRouter([
-  { path: '/', element: <Home /> },
-  { path: '/search', element: <Search /> },
-]);
-
 function App() {
+  const { searchResults, setFilterData } = useGetSearchResults();
   return (
     <div>
-      <RouterProvider router={router} />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route
+            path="/search"
+            element={
+              <Search
+                searchResults={searchResults}
+                setFilterData={setFilterData}
+              />
+            }
+          />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
