@@ -49,8 +49,6 @@ const Analytics = ({ searchResults }) => {
       totals.totalAge.push(Number(result['Age']));
     });
 
-    console.log(totals);
-
     return {
       appUsageAverage: getAverage(totals.totalAppUsage),
       appUsageMedian: getMedian(totals.totalAppUsage),

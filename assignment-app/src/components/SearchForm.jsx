@@ -1,10 +1,21 @@
 import { useState } from 'react';
 
-const SearchForm = ({ handleSubmit, filterData }) => {
+const SearchForm = ({ setFilterData, filterData }) => {
   const [filterKeyword, setFilterKeyword] = useState(
     filterData?.filterKeyword || null
   );
   const [filterType, setFilterType] = useState(filterData?.filterType || null);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const _formData = new FormData(event.target); // Create a FormData object from the form
+    const _filterData = {};
+    for (const [key, value] of _formData.entries()) {
+      _filterData[key] = value;
+    }
+    setFilterData(_filterData);
+  };
+
   return (
     <form onSubmit={handleSubmit}>
       <div className="row">

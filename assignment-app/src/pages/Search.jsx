@@ -12,19 +12,10 @@ const Search = ({
   errorMessage,
   filterData,
 }) => {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const _formData = new FormData(event.target); // Create a FormData object from the form
-    const _filterData = {};
-    for (const [key, value] of _formData.entries()) {
-      _filterData[key] = value;
-    }
-    setFilterData(_filterData);
-  };
   return (
     <Layout>
       <div className="container">
-        <SearchForm handleSubmit={handleSubmit} filterData={filterData} />
+        <SearchForm filterData={filterData} setFilterData={setFilterData} />
         <RecordDisplay
           numOfRecords={searchResults.length}
           isLoading={isLoading}
